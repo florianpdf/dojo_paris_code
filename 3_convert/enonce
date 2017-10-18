@@ -1,0 +1,11 @@
+Ecrire un programme qui convertit une lettre en une autre et renvoit le résultat:
+
+1. La lettre "A" en "U"
+2. La lettre "T" en "D"
+3. La lettre "X" en "P"
+4. La lettre "K" en "C"
+
+Dans tous les autres cas, renvoyer l'élément initial.
+La fonction prendra en paramètre un tableau d'élément
+
+Si l'élément reçu n'est pas un caractère alphabétique, renvoyer "error".

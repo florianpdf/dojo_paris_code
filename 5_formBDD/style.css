@@ -1,0 +1,59 @@
+
+h1{
+	text-align: center;
+}
+form {
+	/* Pour le centrer dans la page */
+	margin: 0 auto;
+	width: 500px;
+	/* Pour voir les limites du formulaire */
+	padding: 1em;
+	border: 1px solid #CCC;
+	border-radius: 1em;
+}
+div{
+	margin-top: 2em;
+}
+label {
+	/* Afin de s'assurer que toutes les étiquettes aient la même dimension et soient alignées correctement */
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+input, textarea {
+/* Afin de s'assurer que tous les champs textuels utilisent la même police
+Par défaut, textarea utilise une police à espacement constant */
+font: 1em sans-serif;
+/* Pour donner la même dimension à tous les champs textuels */
+width: 300px;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+/* Pour harmoniser l'apparence des bordures des champs textuels */
+border: 1px solid #999;
+}
+input:focus, textarea:focus {
+	/* Afin de réhausser les éléments actifs */
+	border-color: #000;
+}
+textarea {
+	/* Pour aligner correctement les champs multilignes et leurs étiquettes */
+	vertical-align: top;
+	/* Pour donner assez d'espace pour entrer du texte */
+	height: 5em;
+/* Pour permettre aux utilisateurs de redimensionner un champ textuel horizontalement
+Cela ne marche pas avec tous les navigateurs  */
+resize: vertical;
+}
+.button {
+	/* Pour positionner les boutons de la même manière que les champs textuels */
+	padding-left: 100px; /* même dimension que les étiquettes */
+}
+button {
+/* Cette marge représente approximativement le même espace
+que celui entre les étiquettes et les champs textuels */
+margin-left: .5em;
+}
+.errors {
+	color: red;
+}
+

@@ -17,7 +17,8 @@
 
 
 <?php 
-
+include 'connect.php';
+$bdd = mysqli_connect(SERVER, USER, PASSWORD, DB);
 $resultat = mysqli_query($bdd, 'SELECT * FROM form');
 
 while($donnees = mysqli_fetch_assoc($resultat)) { ?>
@@ -28,6 +29,8 @@ while($donnees = mysqli_fetch_assoc($resultat)) { ?>
 		<p><?php echo $donnees['courriel'] ?> </p>
 		<p><?php echo $donnees['sujet'] ?> </p>
 		<p><?php echo $donnees['message'] ?> </p>
+		<a href="delete.php?id=<?php echo $donnees['id'] ?>">Delete</a>
+		<a href="form_update_traitement.php?id=<?php echo $donnees['id'] ?>">Update</a>
 	</div>
 
 <?php } ?>

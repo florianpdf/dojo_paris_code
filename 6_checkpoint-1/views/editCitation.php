@@ -4,14 +4,14 @@
     <h1 class="text-center">Edition de la citation</h1>
 
     <!-- On spécifie vers quelle url la donnée du formulaire doit etre envoyé, attention, afin d'éditer une citation, notre requete SQL a besoin de donnaitre son ID -->
-    <form action="index.php?section=edit&id=<?php echo $citation['id']; ?>" method="post">
+    <form action="#" method="post">
     <!-- End -->
 
         <div class="form-group">
             <label for="author">Auteur</label>
 
             <!-- On auto-complete les champs -->
-            <input name="author" type="text" class="form-control" id="author" value="<?php echo $citation['author']; ?>">
+            <input name="author" type="text" class="form-control" id="author" value="">
             <!-- End -->
 
         </div>
@@ -19,7 +19,7 @@
             <label for="chapter">Chapitre</label>
 
             <!-- On auto-complete les champs -->
-            <input name="chapter" type="text" class="form-control" id="chapter" value="<?php echo $citation['chapter']; ?>">
+            <input name="chapter" type="text" class="form-control" id="chapter" value="">
             <!-- End -->
             
         </div>
@@ -27,7 +27,7 @@
             <label for="content">Contenu</label>
 
             <!-- On auto-complete les champs -->
-            <textarea name="content" rows="8" cols="80" class="form-control" id="content" placeholder="Contenu"><?php echo $citation['content']; ?></textarea>
+            <textarea name="content" rows="8" cols="80" class="form-control" id="content" placeholder="Contenu"></textarea>
             <!-- End -->
             
         </div>
@@ -35,7 +35,7 @@
             <label for="date">Date</label>
 
             <!-- On auto-complete les champs -->
-            <input name="date" type="date" class="form-control" id="date" value="<?php echo $citation['date']; ?>">
+            <input name="date" type="date" class="form-control" id="date" value="">
             <!-- End -->
             
         </div>
@@ -43,7 +43,7 @@
             <label for="file">Image</label>
 
             <!-- On auto-complete les champs -->
-            <input name="image" type="text" class="form-control" id="file" value="<?php echo $citation['image']; ?>">
+            <input name="image" type="text" class="form-control" id="file" value="">
             <!-- End -->
             
         </div>

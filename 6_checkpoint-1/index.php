@@ -17,11 +17,18 @@ if (empty($_GET)){
 
 // Si le parametre "add" est défini dans l'url, on appel la fonction du controlleur (kaamelottControler.php) permettant de renvoyer la page d'accueil avec un formulaire d'ajout de citation
 
+elseif ($_GET['section']=='add') {
+	addCitationAction();
+}
+
 
 // Si le parametre "edit" est défini dans l'url, on appel la fonction du controlleur (kaamelottControler.php) permettant de renvoyer la page d'accueil avec un formulaire de modification de citation
 // Attention, afin de modifier une citation, nous avons besoin de pouvoir l'identifier grâce à son id
 
 
-// Si le parametre "delete" est défini dans l'url, on appel la fonction du controlleur (kaamelottControler.php) permettant de renvoyer la page d'accueil avec un formulaire de modification de citation
+// Si le parametre "delete" est défini dans l'url, on appel la fonction du controlleur (kaamelottControler.php) permettant de supprimer la citation
 // Attention, afin de supprimer une citation, nous avons besoin de pouvoir l'identifier grâce à son id
+elseif ($_GET['section']=='delete' && isset($_GET['id'])) {
+	deleteCitationAction();
+}
 

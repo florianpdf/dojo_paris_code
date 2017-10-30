@@ -3,9 +3,11 @@
 <div class="container">
 
     <!-- Si certains champ du formulaire ne sont pas rempli, on affiche un message d'erreur -->
- <!--        <div class="alert alert-danger">
-            <strong>Danger!</strong>
-        </div> -->
+        <?php if(isset($errors)) { ?>
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> <?php echo $errors ?>
+        </div>
+        <?php } ?>
     <!-- End -->
 
     <h1 class="text-center">Ajout d'une citation</h1>

@@ -17,18 +17,33 @@ function indexAction(){
  */
 function addCitationAction(){
     // Si aucun champs du formulaire n'est renseigné ou encore si le formulaire n'est pas soumis
-    
+    if (empty($_POST)) {
     // On affiche le formulaire
+        include('views/addCitation.php');
+    }
     	
     
     // Sinon, on est dans le cas ou le formulaire est envoyé
-    
-	// Vérification que tous les champs du formumaire sont bien renseignés, sinon on renvoie un message d'erreur
-
-
+    else {
+    // Vérification que tous les champs du formumaire sont bien renseignés, sinon on renvoie un message d'erreur  
+        if(empty($_POST['author']) || empty($_POST['content']) || empty($_POST['chapter']) || empty($_POST['date']) || empty($_POST['image'])) {
+      
     // Si certain champs ne sont pas renseigné, on génère un message d'erreur puis on inclut la page du formulaire d'ajout avec le message d'erreur
+            $errors = 'Veuillez renseigner tous les champs';
+            include('views/addCitation.php');
+        }  
 
-    	
+        else {
+            $author = htmlspecialchars($_POST['author']);
+            $chapter = htmlspecialchars($_POST['chapter']);
+            $content = htmlspecialchars($_POST['content']);
+            $date = htmlspecialchars($_POST['date']);
+            $image = htmlspecialchars($_POST['image']);
+            addCitation($author, $chapter, $content, $date, $image);
+            header('Location: index.php');
+        }
+    }
+	
     // Si tous les champs du formulaire sont renseignés, on stock en base de donnée
 
     // Récupération des infos du formulaire
@@ -77,8 +92,12 @@ function editCitationAction(){
  */
 function deleteCitationAction(){
     // Récupération de l'id de la citation à supprimer
-
+    $id = $_GET['id'];
     // Vérification que le paramètre id est bien un nombre (sécurité)
+    if (is_numeric($id)) {
+        deleteCitation($id);
+    }
+    header("Location: index.php"); 
     // Si c'est bien un nombre, on traitre la demande
 
     // Appel de la fonction du model permettant de supprimer une citation précise

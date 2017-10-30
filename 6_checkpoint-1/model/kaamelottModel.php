@@ -7,12 +7,16 @@
 function getAllCitations(){
     // Récuperation de la connection à la base de donnée
     // Rappel: pour récupérer une variable défini en dehors de la fonction, on préfixera la variable par "global"
+    global $bdd;
 
     // Requete qui récupère toutes les citations
+    $resultBdd = mysqli_query($bdd, "SELECT * FROM citation");
 
     // Traitement du resultat retourné par la requete
-
+    $citations = mysqli_fetch_all($resultBdd, MYSQLI_ASSOC);
+    
     // Renvoie du tableau contenant toutes les citations
+    return $citations;
 }
 
 /**
@@ -26,8 +30,11 @@ function getAllCitations(){
 function addCitation($author, $chapter, $content, $date, $image){
     // Récuperation de la connection à la base de donnée
     // Rappel: pour récupérer une variable défini en dehors de la fonction, on préfixera la variable par "global"
+    global $bdd;
 
     // Requete d'ajout en base de donnée
+    mysqli_query($bdd, "INSERT INTO citation (author, chapter, content, date, image) VALUES ('$author', '$chapter', '$content', '$date', '$image')");
+
 }
 
 /**
@@ -66,6 +73,8 @@ function updateCitation($id, $author, $chapter, $content, $date, $image){
  */
 function deleteCitation($id){
     // On récupère la connection à la BDD
+    global $bdd;
 
     // Requete de suppression d'une citation précise en BDD
+    mysqli_query  ($bdd, "DELETE FROM citation WHERE id='$id'");
 }

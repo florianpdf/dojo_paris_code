@@ -28,7 +28,7 @@
             <form class="navbar-form navbar-right">
 
                 <!-- Lien vers la page d'ajout de formulaire, ce dernier doit avoir une indication dans l'url permettant d'identifier la demande de l'utilisateur -->
-                <a href="#" class="btn btn-kaamelott" role="button">Ajouter</a>
+                <a href="index.php?section=add" class="btn btn-kaamelott" role="button">Ajouter</a>
                 <!-- End -->
                 
             </form>

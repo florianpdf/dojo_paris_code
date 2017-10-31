@@ -7,6 +7,7 @@ function indexAction(){
     // Déclarer une variable $citations qui permttra de stocker toutes les citations
     // On récupèrera les citation grâce à la fonction getAllCitations() présente dans le model
     $citations = getAllCitations();
+    // var_dump($citations); die();
 
     // Inclusion de la page d'accueil (home.php)
     include('views/home.php');
@@ -16,29 +17,48 @@ function indexAction(){
  * Renvoie la page d'ajout de citation ou bien traite la requete d'enregistrement
  */
 function addCitationAction(){
+
+
     // Si aucun champs du formulaire n'est renseigné ou encore si le formulaire n'est pas soumis
-    
-    // On affiche le formulaire
-    	
+    if (empty($_POST)) {
+        // On affiche le formulaire
+        include('views/addCitation.php');
+    }
     
     // Sinon, on est dans le cas ou le formulaire est envoyé
-    
-	// Vérification que tous les champs du formumaire sont bien renseignés, sinon on renvoie un message d'erreur
+    else {
+        // Vérification que tous les champs du formumaire sont bien renseignés, sinon on renvoie un message d'erreur
+        if (
+            empty($_POST['content']) || 
+            empty($_POST['author']) || 
+            empty($_POST['chapter'])|| 
+            empty($_POST['date'])|| 
+            empty($_POST['image'])
+        ){
+            // Si certain champs ne sont pas renseigné, on génère un message d'erreur puis on inclut la page du formulaire d'ajout avec le message d'erreur
+            $error = "Veuillez renseigner tous les champs";
 
+            include('views/addCitation.php');
+        }
+        // Si tous les champs du formulaire sont renseignés, on stock en base de donnée
+        else {
+            // Récupération des infos du formulaire
+            // Sécurité: htmlspecialchars permet de remplacer les caractères spéciaux par leur équivalent  HTML
+            // Exemple: < passé dans la fonction htmlspecialchars renvoie &lt;
+            // http://php.net/manual/fr/function.htmlspecialchars.php
+            $author=htmlspecialchars($_POST['author']);
+            $content=htmlspecialchars($_POST['content']);
+            $chapter=htmlspecialchars($_POST['chapter']);
+            $date=htmlspecialchars($_POST['date']);
+            $image=htmlspecialchars($_POST['image']);
 
-    // Si certain champs ne sont pas renseigné, on génère un message d'erreur puis on inclut la page du formulaire d'ajout avec le message d'erreur
+            // Appel du modele ==> execution de la requete d'enregistrement en base de donné (addCitation())
+            addCitation($author, $chapter, $content, $date, $image);
 
-    	
-    // Si tous les champs du formulaire sont renseignés, on stock en base de donnée
-
-    // Récupération des infos du formulaire
-	// Sécurité: htmlspecialchars permet de remplacer les caractères spéciaux par leur équivalent  HTML
-	// Exemple: < passé dans la fonction htmlspecialchars renvoie &lt;
-	// http://php.net/manual/fr/function.htmlspecialchars.php
-
-	// Appel du modele ==> execution de la requete d'enregistrement en base de donné (addCitation())
-
-    // Redirection vers le controllers frontal index.php
+            // Redirection vers le controllers frontal index.php
+            header('Location: index.php');
+        }
+    }
 }
 
 /**
@@ -77,9 +97,14 @@ function editCitationAction(){
  */
 function deleteCitationAction(){
     // Récupération de l'id de la citation à supprimer
+    $id = $_GET['id'];
 
     // Vérification que le paramètre id est bien un nombre (sécurité)
     // Si c'est bien un nombre, on traitre la demande
+    if (is_numeric($id)){
+        deleteCitation($id); 
+    }
+    header('Location: index.php');
 
     // Appel de la fonction du model permettant de supprimer une citation précise
 

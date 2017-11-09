@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    <h1>Helle je suis la nav admin</h1>
+{% endblock %}
+
+{% block body %}
+    <h1>Hello je suis le bodu du layout user</h1>
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+
+{% block footer %}
+    <h1>Hello je suis le footer du user</h1>
+{% endblock %}

@@ -15,9 +15,9 @@ class Test {
 	 */
 	public function assertEquals($expectedResult, $sentResult){
 		if($expectedResult === $sentResult){
-			return "\033[32m True, " . $expectedResult . " is equal to " . $sentResult . " \n";
+			return "\033[32mTrue, " . $expectedResult . " is equal to " . $sentResult . " \n";
 		} else {
-			return "\033[31m False, " . $expectedResult . " is not equal to " . $sentResult . " \n";
+			return "\033[31mFalse, " . $expectedResult . " is not equal to " . $sentResult . " \n";
 		}
 	}
 }

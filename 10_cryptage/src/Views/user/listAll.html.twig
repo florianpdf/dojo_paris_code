@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Hello World</h1>
+    {% for user in users %}
+        <ul>
+            <li>Email: {{ user.email }}</li>
+            <li>Mot de pass crypté: {{ user.mdp }}</li>
+        </ul>
+    {% endfor %}
+
+    <a href="index.php?section=add">S'enregistrer</a>
+{% endblock %}

@@ -46,9 +46,10 @@ class User{
 		"0" => "lkjkhuyè",
 	];
 
-	public function __construct()
+	public function __construct($email = null, $mdp = null)
 	{
-
+		$this->email = $email;
+		$this->setMdp($mdp);
 	}
 
 	/**
@@ -103,6 +104,12 @@ class User{
 	 */
 	public function setMdp($mdp)
 	{
-		$this->mdp = $mdp;
+		$hash = "";
+		for($i = 0; $i < strlen($mdp); $i++)
+		{
+			$hash .= Self::CRYPT[$mdp[$i]];
+		}
+
+		$this->mdp = $hash;
 	}
 }

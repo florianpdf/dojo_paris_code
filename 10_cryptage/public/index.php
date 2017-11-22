@@ -6,11 +6,11 @@ require_once '../app/config.php';
 
 use MyApp\Controllers\UserController;
 
-$defaultController = new UserController();
+$userController = new UserController();
 
 if (empty($_GET)){
-	echo $defaultController->indexAction();
+	echo $userController->indexAction();
 }
 elseif ($_GET['section'] === 'add'){
-	echo $defaultController->newAction();
+	echo $userController->newAction();
 }

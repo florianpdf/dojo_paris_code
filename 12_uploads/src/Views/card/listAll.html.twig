@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Hello World</h1>
+    {% for card in cards %}
+        <img width="100" src="uploads/{{ card.url }}" alt="">
+    {% endfor %}
+
+    <a href="index.php?section=add">Ajouter une image</a>
+{% endblock %}

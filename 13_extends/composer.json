@@ -1,0 +1,15 @@
+{
+    "name": "florian/13_extends",
+    "authors": [
+        {
+            "name": "Florian Grandjean",
+            "email": "florian.pdf@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WCS\\": "src/"
+        }
+    },
+    "require": {}
+}

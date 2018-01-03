@@ -1,0 +1,17 @@
+{
+    "name": "florian/13_number_to_string",
+    "require": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "WCS\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florian Grandjean",
+            "email": "florian.pdf@gmail.com"
+        }
+    ]
+}

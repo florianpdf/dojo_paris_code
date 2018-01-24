@@ -46,6 +46,7 @@ class TestNumberChar extends \PHPUnit\Framework\TestCase
      */
     public function test4()
     {
+
         $this->assertEquals(NumberOfChar::countChar("aa"), ["a" => 2]);
     }
 

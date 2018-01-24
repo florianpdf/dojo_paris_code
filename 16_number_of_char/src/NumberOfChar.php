@@ -15,19 +15,18 @@ class NumberOfChar
      */
     public static function countChar(string $str) :array
     {
-    	// $str = 'AB';
-	    $str = strtolower($str);
-	    $str = preg_replace('/[^a-z]/','',$str);
-	    $tabstr = str_split($str);
-	    $result = [];
-	    foreach($tabstr as $char)
-	    {
-	    	if (array_key_exists($char, $result)){
-			    $result[$char]++;
-		    } else {
-	    		$result[$char] = 1;
-		    }
-	    }
-    	return $result;
+        $str = preg_replace("/[^a-z]/","",strtolower($str));
+        $tab = str_split($str);
+
+        $result= [];
+        foreach ($tab as $char){
+            if(!array_key_exists($char,$result)){
+                $result[$char]=1;
+            }else{
+                $result[$char]++;
+            }
+        }
+        arsort($result);
+        return $result;
     }
 }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style type="text/css">
+		.un {
+			height: 100px;
+			width: 100px;
+			background: red; 
+		}
+	</style>
+
+	<title>jQuery</title>
+</head>
+<body>
+	<h1>Exercice 1</h1>
+	<form> 
+		<input id="input_exo_un" type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 2</h2>
+	<form id="form_exo_deux"> 
+		<input id="input_exo_2" type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 3</h2>
+	<form id="form_exo_trois"> 
+		<input id="input_exo_3" type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 4</h2>
+	<div id="un" class="un"></div>
+	<button id="change">Change</button>
+
+	<h2>Exercice 5</h2>
+	<span class="normal"></span>
+	<span class="append"></span>
+	<button id="add">Add</button>
+
+	<h2>Exercice 6</h2>
+	<button id="api_exercice_six">Call Api</button>
+	<div id="apiContent">
+		
+	</div>
+	
+	<script type="text/javascript">
+
+		// Exercice 1
+		var elem1 = document.getElementById("input_exo_un");
+		elem1.addEventListener('keyup', function(){
+			console.log(elem1.value);
+		})
+
+		// Exercice 2
+		var form2 =  document.getElementById("form_exo_deux");
+		form2.addEventListener('submit', function(event){
+			var input2 = document.getElementById("input_exo_2");
+			if (input2.value === ''){
+				event.preventDefault();
+				alert('Veuillez remplir le form')
+			}
+		})
+
+		// Exercice 3
+		var form3 =  document.getElementById("form_exo_trois");
+		form3.addEventListener('submit', function(event){
+			var input3 = document.getElementById("input_exo_3");
+			if (input3.value === ''){
+				event.preventDefault();
+				input3.style.borderColor = "red";
+			}
+		})
+
+		// Exercice 4
+		var elem4 = document.getElementById("change");
+		elem4.addEventListener('click', function(){
+			document.getElementById("un").classList.toggle('un');
+		})
+
+		// Exercice 5
+		var elem5 = document.getElementById("add");
+		elem5.addEventListener("click", function(){
+			document.querySelector(".normal").innerHTML = 'coucou';
+			document.querySelector(".append").append('coucou');
+		})
+
+
+		// Exercice 6
+		var button_exo_6 = document.getElementById("api_exercice_six");
+		button_exo_6.addEventListener('click', function(){
+			var request = new XMLHttpRequest();
+			request.open('GET', 'http://jsonplaceholder.typicode.com/posts/1', true);
+
+			request.onload = function() {
+			    var data = JSON.parse(request.responseText);
+			    var title = "<h3>" + data.title + "</h3>";
+				var body = "<p>" + data.body + "</p>";
+				document.getElementById("apiContent").innerHTML = title + body
+			};
+			
+			request.send();
+		})
+
+	</script>
+</body>
+</html>

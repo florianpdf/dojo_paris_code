@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style type="text/css">
+		.un {
+			height: 100px;
+			width: 100px;
+			background: red; 
+		}
+	</style>
+
+	<title>jQuery</title>
+</head>
+<body>
+	<h1>Exercice 1</h1>
+	<form> 
+		<input id="input_exo_un" type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 2</h2>
+	<form id="form_exo_deux"> 
+		<input type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 3</h2>
+	<form id="form_exo_trois"> 
+		<input type="text" name="name">
+		<button type="submit">Valider</button>
+	</form>
+
+	<h2>Exercice 4</h2>
+	<div id="un" class="un"></div>
+	<button id="change">Change</button>
+
+	<h2>Exercice 5</h2>
+	<span class="normal"></span>
+	<span class="append"></span>
+	<button id="add">Add</button>
+
+	<h2>Exercice 6</h2>
+	<button id="api_exercice_six">Call Api</button>
+	<div id="apiContent">
+		
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript">
+
+		// Exercice 1
+		$("#input_exo_un").keyup(function() {
+  			console.log($(this).val());
+		});
+
+		// Exercice 2
+		$("#form_exo_deux").submit(function( event ) {
+			if($("#form_exo_deux input").val()==""){
+			  	event.preventDefault();	 
+ 		 		alert('Veuillez remplir le form')
+  			}
+		});
+
+		// Exercice 3
+		$( "#form_exo_trois" ).submit(function( event ) {
+			var input = $("#form_exo_trois input");
+			if(input.val()==""){ 
+				event.preventDefault();	 
+ 		 		input.css("border-color","red");
+  			}
+		});
+
+		// Exercice 4
+		$("#change").click(function(){
+			$("#un").toggleClass("un");
+		});
+
+		// Exercice 5
+		$("#add").click(function(){
+			$(".normal").html("coucou")
+			$(".append").append("<p>coucou</p>")
+		});
+
+		// Exercice 6
+		$('#api_exercice_six').click(function(){
+			var root = 'http://jsonplaceholder.typicode.com';
+
+			$.ajax({
+				url: root + '/posts/1',
+				method: 'GET'
+			}).then(function(data) {
+				var title = "<h3>" + data.title + "</h3>";
+				var body = "<p>" + data.body + "</p>";
+				$('#apiContent').html(title + body);
+			});
+		})
+
+	</script>
+</body>
+</html>
